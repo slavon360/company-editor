@@ -26,6 +26,7 @@ $scope.font=true;
 
 $scope.deleteParentCompany=function(company,event,index,listCompanies){
 if(listCompanies.indexOf(company)==index && event.currentTarget.nextSibling.className=='ng-hide'){
+   angular.element(event.currentTarget).parent()[0].hidden=true
 }else{
   company.name='(Your company name)';company.estEarning=0;company.allEstEarning=0;
 }
