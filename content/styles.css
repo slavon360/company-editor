@@ -1,0 +1,28 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+ul{
+	list-style: none;
+}
+.main-ul div{
+	cursor: pointer;
+}
+.main-ul div:hover{
+   background: rgba(10,10,50,.2);
+}
+
+.inline-div{
+	display: inline-block;
+}
+.pos-fixed{
+	position: fixed;
+	top:10%;
+	right: 0;
+	width: 45%;
+}
+.font{
+	font-weight: bold;
+	color: grey;
+	background: lightgreen;
+	font-size: 1.6em;
+}

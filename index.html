@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app='mainModule'>
+<head>
+	<title>Project</title>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="content/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="content/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="content/styles.css">
+<body>
+<div class="main-view ng-cloak" ng-controller="mainController" >
+<h3 class="text-center">List of companies</h3>
+
+
+<ul class="main-ul" >
+    <li ng-repeat=" company in listCompanies " ><div  class="inline-div" ng-click="getDataCompany(company)">{{company.name}} {{company.estEarning | currency}} {{isReal(company) | currency}}</div><button class="inline-div" ng-click="deleteParentCompany(company, $event,$index,listCompanies)">Delete</button><button ng-show="$first"  ng-click="addNewParent(listCompanies)">Add new </button>
+        <ul>
+            <li ng-repeat="child in company.childCompanies" ><div class="inline-div" ng-click="getDataCompany(child)">{{child.name}} {{child.estEarning | currency}} {{isReal(child) | currency}}</div><button class="inline-div" ng-click="deleteChildCompany(child, $event,$index,company)">Delete</button><button ng-show="$first" ng-click="addNew(company)">Add new </button>
+                 <ul>
+                     <li ng-repeat="subchild in child.childCompanies" ><div class="inline-div" ng-click="getDataCompany(subchild)">{{subchild.name}} {{subchild.estEarning | currency}} {{isReal(subchild) | currency}}</div><button class="inline-div" ng-click="deleteSubchildCompany(subchild,$event,$index,child)">Delete</button><button ng-show="$first" ng-click="addNew(child)">Add new </button></li> 
+                 </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<div class="well pos-fixed">
+<h3 class="text-center" style="margin-top:0;">Edit </h3>
+<form name="defaultCompanies">
+
+<div class="form-group">
+<label>Name of company</label>
+    <input type="text" class="form-control" ng-class="{'font':font}" name="Name" ng-model="dataCompany.name"  value="{{dataCompany.name}}">
+</div>
+<div class="form-group">
+<label>Company Estimated Earnings</label>
+    <input type="number" class="form-control " ng-class="{'font':font}" name="companyEarnings" ng-model="dataCompany.estEarning" value="{{dataCompany.estEarning}}">
+</div>
+<div class="form-group">
+<label>Company Estimated Earnings + Child Companies Estimated Earnings</label>
+    <input type="number" class="form-control" ng-class="{'font':font}" name="total" ng-model="dataCompany.allEstEarning" value="{{dataCompany.allEstEarning}}">
+
+</div>
+
+</form>
+</div>
+<br>
+<div unordered-list="listFromFreeman" list-item="name"></div>
+</div>     
+
+
+
+
+
+
+<script type="text/javascript" src='scripts/jquery-3.1.0.js'></script>
+<script type="text/javascript" src='scripts/angular.js'></script>
+<script type="text/javascript" src='scripts/angular-route.js'></script>
+<script type="text/javascript" src='scripts/angular-carousel.min.js'></script>
+<script type="text/javascript" src='scripts/angular-touch.js'></script>
+<script type="text/javascript" src='scripts/bootstrap.js'></script>
+<script type="text/javascript" src='app/controllers/controllers.js'></script>
+</body>
+</html>
