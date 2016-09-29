@@ -25,8 +25,10 @@ $scope.font=true;
 }
 
 $scope.deleteParentCompany=function(company,event,index,listCompanies){
+
 if(listCompanies.indexOf(company)==index && event.currentTarget.nextSibling.className=='ng-hide'){
-   angular.element(event.currentTarget).parent()[0].hidden=true
+  angular.element(event.currentTarget).parent()[0].hidden=true
+
 }else{
   company.name='(Your company name)';company.estEarning=0;company.allEstEarning=0;
 }
@@ -64,5 +66,4 @@ par.childCompanies.push({name:'(name of company)',estEarning:0,allEstEarning:0,c
  let ul=angular.element('<ul>').append(angular.element('<li>').text(par.childCompanies[0].name+' '+
   par.childCompanies[0].estEarning+' '+par.childCompanies[0].allEstEarning))
 }
-}
-})
+}})
